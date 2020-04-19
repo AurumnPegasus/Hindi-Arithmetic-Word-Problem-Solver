@@ -1,0 +1,6 @@
+[submodule "Parser + Tagger + Tokenizer_new"]
+	path = Parser + Tagger + Tokenizer_new
+	url = https://irshadbhat@bitbucket.org/iscnlp/pos-tagger.git
+[submodule "https:/irshadbhat@bitbucket.org/iscnlp/tokenizer.git"]
+	path = https:/irshadbhat@bitbucket.org/iscnlp/tokenizer.git
+	url = https://irshadbhat@bitbucket.org/iscnlp/pos-tagger.git
