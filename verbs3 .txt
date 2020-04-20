@@ -1,32 +1,32 @@
-have      0		            *
-be        0		            *
+have      0		*			है
+be        0		*			होना
 buy       t+ 	transfer 	खरीदा
 give      t- 	transfer	दिया
 pick      t+ 	transfer	उठाया
 grow      +					बढा
 spend     --				खर्चा
 find      +					ढूंढा
-pay       t-	            *
+pay       t-	*
 plant	  t-				उगाया
 go        +					जा
 play      +					खेला
 get       t+ 	transfer 	ला
-cut       --		    	काटा
-work      +			        काम
+cut        		--			काटा
+work      		+			काम
 sell      t- 				बेचा
 purchase  t+ 	(transfer)	*
 place     t-				रखा
-miss      -		            *
-make      ++			    बनाया
+miss      -		*
+make       		++			बनाया
 catch     t+ 	transfer 	*		
 hold 	  + 	transfer OK	पकडा
-serve     -		            *
+serve     -		*
 earn      +					कमाया
 borrow    t+ 	transfer	उधार
 save      +					बचाया
 receive   t+ 	transfer	मिला
 leave     t-				जा
-attend    +		            *
+attend    +		*
 see       +					देखा
 stack     t-				रखा
 eat       -- 	?			खाया
@@ -43,38 +43,38 @@ put       t- 	transfer 	डालना
 call      +					बुलाया
 break     --				तोडा
 shine     +					चमका
-store	  t-	            *
+store	  t-	*
 begin     0					शुरु
-divide    -		            *
+divide    -		*
 come 	  +					आना
 fill 	  t-				भरना
 clean     +					साफ
-add 	  ++	            *
+add 	  ++	*
 defeat    -					हार
-crack     -		            *
+crack     -		*
 decide 	  +					निशचित
 split     - 	?			*
 start 	  +					शुरु
 finish    +					खतम
 gather    ++				इकठ्ठा
 want	  +	 				ज़रूरत
-desire	  +		            *
-wish 	  +		            *
+desire	  +		*
+wish 	  +		*
 ask 	  +					पूछना
-contain   0		            *
-include   0		            *
+contain   0		*
+include   0		*
 weigh	  +					भार
 use		  --				इस्तमाल	
 walk	  +					चल
 produce	  ++				बनाना
 rain	  +					बारिश
 run		  +					भागा / दौडा
-leak	  --	            *
+leak	  --	*
 drink	  -- 	???			पीना
-hike	  +		            *	
+hike	  +		*	
 harvest	  t+				फसल
-jog		  +	  	   			दौडा
-land	  +		            *
+jog		  +	  				दौडा
+land	  +		*
 collect	  ++				इकठ्ठा
 pour	  t-				डालना
 dye		  +					रंगना
@@ -85,24 +85,24 @@ saw		  -- 	???			देखा
 spill	  t-				गिराना
 move	  +					हिलाना
 combine	  +					जोडा
-snow	  +		            *
-repave	  +		            *
+snow	  +		*
+repave	  +		*
 cover	  +					ढकना
-decrease  --		    	कमना 
-increase  ++ 			    बढाना
-list	  +		            *
-bear	  +		            *
+decrease		--			कमना 
+increase		++ 			बढाना
+list	  +		*
+bear	  +		*
 feed	  t-				खिलाना
 read	  +					पढना
 fix		  ++				ठीक करना	
 build	  ++				बनाना
 ride	  +					*
-own		  0		            *
-load	  t-	            *
-immigrate +		            *
-record	  +		            *
+own		  0		*
+load	  t-	*
+immigrate +		*
+record	  +		*
 sow		  t-				बोना
-transfer  t-	            *
+transfer  t-	*
 live	  +					जीना
 carry	  +					उठाना
 pave	  +					*
@@ -116,4 +116,3 @@ require	  +					*
 travel	  +					*
 sprint	  +					भागना/ दौडना
 tear	  -					फाडना
-together  0                 मिलाकर
