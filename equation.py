@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
 from source import sentences, source
+import nltk
+from nltk.tokenize import sent_tokenize
+from nltk.tokenize import word_tokenize
 from isc_tokenizer import Tokenizer
 from isc_tagger import Tagger
 from isc_parser import Parser
@@ -23,14 +26,17 @@ for i in x:
     print(tag_sep_sent)
     containers = []                                                         # Proper Nouns
     values = []                                                             # Numbers
-    objects = []                                                            # Common Nouns
-    for j in range(0, len(sep_sentence)):
+    objects = []
+    Noun_tags_1 = ['NNP', 'PRP', 'NNPC']
+    Noun_tags_2 = [ 'NN', 'NNS']
+    length = len(sep_sentence) #so that it is not calculated everytime                                                            # Common Nouns
+    for j in range(0, length):
         current_sent = sep_sentence[j]
         current_tagset = tag_sep_sent[j]
         is_number = False
         store_adj = ""                                                      # Stores the adjective assosciated with a object
         store_last_proper = ""                                              # Stores the required proper noun, which is the first to the right of QC
-        for k in range(0, len(current_tagset)-1):   
+        for k in range(0, len(current_tagset)-1):
             current_word = current_sent[k]
             current_tag = current_tagset[k][1]
             next_word = current_sent[k+1]
@@ -53,6 +59,16 @@ for i in x:
                 concat_string = store_adj + " " + current_word
                 objects.append(concat_string)
                 store_adj = ""
+            elif(current_tag == in Noun_tags_1):
+                # if current_tagset[k-1][1] == 'JJ':
+                #     containers.append(current_sent[k-1] + ' ' + current_word)
+                # else:
+                containers.append(current_word)
+            elif(current_tag in Noun_tags_2 and is_number):
+                if current_tagset[k-1][1] == 'JJ':
+                    objects.append(current_sent[k-1] + ' ' + current_word)
+                else:
+                    objects.append(current_word)
                 is_number = False
     
     print(i)
