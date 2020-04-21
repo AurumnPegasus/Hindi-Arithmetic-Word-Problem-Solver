@@ -16,6 +16,9 @@ for i in sentences:
     if(counter == 3):
         break
     tag_sep_sent = []                                                       # Stores the corresponding tags
+    values = []
+    containers = []
+    objects = []
     for j in sep_sentence:
         tag_sep_sent.append(tagger.tag(j))
         for j in range(0, len(sep_sentence)):
