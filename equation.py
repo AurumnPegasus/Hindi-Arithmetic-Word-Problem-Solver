@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
 from source import sentences, source
+import nltk
+from nltk.tokenize import sent_tokenize
+from nltk.tokenize import word_tokenize
 from isc_tokenizer import Tokenizer
 from isc_tagger import Tagger
 from isc_parser import Parser
@@ -20,12 +23,16 @@ for i in sentences:
         tag_sep_sent.append(tagger.tag(j))
     containers = []                                                         # Proper Nouns
     values = []                                                             # Numbers
-    objects = []                                                            # Common Nouns
-    for j in range(0, len(sep_sentence)):
+    objects = []
+    Noun_tags_1 = ['NNP', 'PRP', 'NNPC']
+    Noun_tags_2 = [ 'NN', 'NNS']
+    length = len(sep_sentence) #so that it is not calculated everytime                                                            # Common Nouns
+    for j in range(0, length):
         current_sent = sep_sentence[j]
         current_tagset = tag_sep_sent[j]
         is_number = False
-        for k in range(0, len(current_tagset)):
+        tag_length = len(current_tagset)
+        for k in range(0, tag_length): #same as above
             current_word = current_sent[k]
             current_tag = current_tagset[k][1]
             if(current_word == "$"):                                        # Handles special case: Money
@@ -35,10 +42,16 @@ for i in sentences:
                 if( current_word.isnumeric()):                      
                     values.append(current_word)
                     is_number = True
-            elif(current_tag == 'NNP' or current_tag == 'NNPC'):
+            elif(current_tag == in Noun_tags_1):
+                # if current_tagset[k-1][1] == 'JJ':
+                #     containers.append(current_sent[k-1] + ' ' + current_word)
+                # else:
                 containers.append(current_word)
-            elif((current_tag == 'NN' or current_tag == 'NNS') and is_number):
-                objects.append(current_word)
+            elif(current_tag in Noun_tags_2 and is_number):
+                if current_tagset[k-1][1] == 'JJ':
+                    objects.append(current_sent[k-1] + ' ' + current_word)
+                else:
+                    objects.append(current_word)
                 is_number = False
     
     print(i)
