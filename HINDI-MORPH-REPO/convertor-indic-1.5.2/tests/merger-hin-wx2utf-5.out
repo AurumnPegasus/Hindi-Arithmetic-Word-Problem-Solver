@@ -1,0 +1,40 @@
+<Sentence id='5'>			
+1	((	NP	
+1.1	((	NP	<fs  esubtype="timeOfDay"  etype="timex">
+1.1.1	शाम	NN	<fs af='शाम,n,f,sg,3,o,0,0' esubtype="timeOfDay"  etype="timex">
+	))
+1.2	में	PSP	<fs af='में,psp,,,,,,'>
+	))
+2	((	NP	
+2.1	((	NP	<fs  esubtype="time"  etype="timex"  value="7:20">
+2.1.1	((	NP	<fs  etype="numx"  value="7.0">
+2.1.1.1	7	QC	<fs af='7,num,,,,,,' etype="numx"  value="7.0">
+	))
+2.1.2	बजकर	VM	<fs af='बज,v,any,any,any,,कर,kara'>
+2.1.3	((	NP	<fs  etype="numx"  value="20.0">
+2.1.3.1	20	QC	<fs af='20,num,,,,,,' etype="numx"  value="20.0">
+	))
+2.1.4	मिनट	NN	<fs af='मिनट,n,m,sg,3,o,0,0' esubtype="timeMeasure"  etype="timex"  value="1.0"  Unit="Minute">
+	))
+	))
+3	((	NP	
+3.1	पर	PSP	<fs af='पर,psp,,,,,,'>
+	))
+4	((	NP	
+4.1	सूर्य	NN	<fs af='सूर्य,n,m,sg,3,d,0,0'>
+	))
+5	((	NP	
+5.1	((	NP	<fs  esubtype="durationOfEra"  etype="timex">
+5.1.1	उत्तरायण	NNP	<fs af='उत्तरायण,n,m,sg,3,o,0,0' esubtype="durationOfEra"  etype="timex">
+	))
+5.2	में	PSP	<fs af='में,psp,,,,,,'>
+	))
+6	((	NP	
+6.1	प्रवेश	NN	<fs af='प्रवेश,n,m,sg,3,d,0,0'>
+	))
+7	((	VGF	
+7.1	करेगा	VM	<fs af='कर,v,m,sg,3,,गा,gA'>
+7.2	.	SYM	<fs af='.,punc,,,,,,'>
+	))
+</Sentence>			
+			

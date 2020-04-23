@@ -1,0 +1,45 @@
+Basic Installation
+==================
+
+	First of all ensure that you have set $setu environment variable to the sampark path.
+	if you have not set the setu environment variable then set it by adding the following
+	line in your .bash_profile
+
+	export setu=~/hindi_morph[you can choose any directory or location]
+	this will only be valid for a session
+	or	
+	to make changes permanent, run the following 2 commands
+
+	echo "export setu=~/hindi_morph" >> ~/.bashrc
+	source ~/.bashrc
+	
+	you will have to run 'source .bash_profile' to make these changes effective.
+	test that the path is set by 'env | grep setu'
+	
+	The way to copy/compile this package is :
+
+  1. 'cd' to the directory containing the package's source code.
+      cd $setu/src/sl/morph/hin
+
+  2. Type 'make' to copy the package source to $setu/src/sl/morph/hin
+     and the data to $setu/data_src/sl/morph/hin
+
+  3. 'cd' to the sytem wide directory $setu/src/sl/morph/hin
+
+  4. Type 'make compile' to compile the programs, data files and
+     documentation in the sampark system wide directory.
+
+  5. Type 'make install' to install the programs, data files and
+     documentation in the sampark system wide directory.
+     (Refer Chapter-6 in the ilmtguidlines_0.3)
+
+  5. You can remove the program binaries and object files from the
+     source code directory by typing `make clean'.  
+
+Note:-- if there is error while compilation follow below steps.
+a)cd $setu/src/sl/morph/hin
+b)remove the .(dot)o files inside directory 'analyser'
+  rm -rf *.o or 'make clean' to remove it.
+c)again compile using 'make compile' 
+
+For how to use morph, please refer to the file README.
