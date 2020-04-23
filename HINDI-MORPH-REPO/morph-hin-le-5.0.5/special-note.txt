@@ -1,0 +1,8 @@
+This is Language Engineered version by using research version 2.5.2/2.5.4 .
+
+The name of the module is attached with extra parameter language engineered (le)
+
+
+e.g.
+
+morph-hin-le-5.0.2

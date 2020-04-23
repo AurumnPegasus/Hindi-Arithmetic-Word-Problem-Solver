@@ -1,0 +1,31 @@
+<Sentence id='1'>			
+1	((	NP	
+1.1	((	NP	<fs  esubtype="location"  etype="ne">
+1.1.1	बड़ौदे	NNP	<fs af='बड़ौदे,unk,,,,,,'>
+	))
+1.2	से	PSP	<fs af='से,psp,,,,,,'>
+	))
+2	((	NP	
+2.1	((	NP	<fs  esubtype="location"  etype="ne">
+2.1.1	बंबई	NNP	<fs af='बंबई,n,m,sg,3,d,0,0'>
+	))
+	))
+3	((	VGNF	
+3.1	जाते	VM	<fs af='जा,v,m,pl,any,,ता,wA'>
+	))
+4	((	NP	
+4.1	समय	NN	<fs af='समय,n,m,sg,3,d,0,0'>
+	))
+5	((	NP	
+5.1	((	NP	<fs  etype="numx"  value="1.0">
+5.1.1	एक	QC	<fs af='एक,adj,any,any,,any,,' etype="numx"  value="1.0">
+	))
+5.2	रेलवे	NNC	<fs af='रेलवे,n,m,sg,3,d,0,0'>
+5.3	स्टेशन	NN	<fs af='स्टेशन,n,m,sg,3,d,0,0'>
+	))
+6	((	VGF	
+6.1	है	VM	<fs af='है,v,any,sg,3,,है,hE'>
+6.2	.	SYM	<fs af='.,punc,,,,,,'>
+	))
+</Sentence>			
+			

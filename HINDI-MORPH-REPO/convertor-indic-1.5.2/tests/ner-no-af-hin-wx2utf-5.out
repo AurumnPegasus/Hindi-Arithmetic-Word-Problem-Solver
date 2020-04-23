@@ -1,0 +1,25 @@
+<Sentence id="5"> 			
+1	((	NP	<fs  esubtype='timeOfDay'  etype='timex'>
+1.1	शाम	unk	<fs  esubtype='timeOfDay'  etype='timex'>
+	))
+2	में	unk	
+3	((	NP	<fs  esubtype='time'  etype='timex'  value='7:20'>
+3.1	((	NP	<fs  etype='numx'  value='7.0'>
+3.1.1	7	unk	<fs  etype='numx'  value='7.0'>
+	))
+3.2	बजकर	unk	
+3.3	((	NP	<fs  etype='numx'  value='20.0'>
+3.3.1	20	unk	<fs  etype='numx'  value='20.0'>
+	))
+3.4	मिनट	unk	<fs  esubtype='timeMeasure'  etype='timex'  value='1.0'  Unit='Minute'>
+	))
+4	पर	unk	
+5	सूर्य	unk	
+6	((	NP	<fs  esubtype='durationOfEra'  etype='timex'>
+6.1	उत्तरायण	unk	<fs  esubtype='durationOfEra'  etype='timex'>
+	))
+7	में	unk	
+8	प्रवेश	unk	
+9	करेगा	unk	
+10	.	unk	
+</Sentence>			

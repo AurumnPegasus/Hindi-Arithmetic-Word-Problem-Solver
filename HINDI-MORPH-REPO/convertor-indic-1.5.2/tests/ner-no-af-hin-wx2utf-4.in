@@ -1,0 +1,31 @@
+<Sentence id="4">
+1	((	NP	<fs etype='timex' esubtype='date' value='19:06:1930'>
+1.1	jUna	unk	<fs etype='timex' esubtype='date' value='xx:06:xx'>
+1.2	((	NP	<fs etype='numx' value='19.0'>
+1.2.1	19	unk	<fs etype='numx' value='19.0'>
+	))
+1.3	,	unk
+1.4	((	NP	<fs etype='numx' value='1930.0'>
+1.4.1	1930	unk	<fs etype='numx' value='1930.0'>
+	))
+	))
+2	ke	unk
+3	((	NP	<fs etype='timex' esubtype='dayOfWeek'>
+3.1	maMgalavAra	unk <fs etype='timex' esubtype='dayOfWeek'>
+	))
+4	kI	unk
+5	((	NP	<fs etype='timex' esubtype='timeOfDay'>
+5.1	subaha	unk	<fs etype='timex' esubtype='timeOfDay'>
+	))
+6	yuxXa	unk
+7	ko	unk
+8	((	NP	<fs etype='timex' esubtype='timeMeasure' unit='Month value='10.0'>
+8.1	((	NP	<fs etype='numx' value='10.0'>
+8.1.1	xasa	unk	<fs etype='numx' value='10.0'>
+	))
+8.2	mahIne	unk	<fs etype='timex' esubtype='timeMeasure' Unit='Month' value='1.0'>
+	))
+9	pure	unk
+10	hoMge	unk
+11	.	unk
+</Sentence>
