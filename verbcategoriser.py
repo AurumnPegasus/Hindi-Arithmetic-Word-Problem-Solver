@@ -29,9 +29,9 @@ for i in sentences:
     objects = []
     for j in sep_sentence:
         for words in j:
-            print(words)
+            # print(words)
             tags = tagger.tag(words.split())
-            print(tags)
+            # print(tags)
             # tags[0] = tags[0].split()
             if(tags[0][1] == 'VM'):
                 f = open('tempfile.txt', 'w+', encoding='utf-8')
