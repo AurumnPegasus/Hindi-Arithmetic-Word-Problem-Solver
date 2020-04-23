@@ -32,10 +32,11 @@ for i in sentences:
             print(words)
             tags = tagger.tag(words.split())
             print(tags)
-            if(tags[1] == 'VM'):
+            # tags[0] = tags[0].split()
+            if(tags[0][1] == 'VM'):
                 f = open('tempfile.txt', 'w')
                 flag = 0
-                f.write(tags[0])
+                f.write(tags[0][0])
                 os.system(
                     "python run_morph_on_file_with_raw_text.py --input tempfile --output output.txt")
                 f.close()
