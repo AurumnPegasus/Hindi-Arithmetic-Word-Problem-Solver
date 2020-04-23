@@ -34,13 +34,13 @@ for i in sentences:
             print(tags)
             # tags[0] = tags[0].split()
             if(tags[0][1] == 'VM'):
-                f = open('tempfile.txt', 'w')
+                f = open('tempfile.txt', 'w+', encoding='utf-8')
                 flag = 0
                 f.write(tags[0][0])
                 os.system(
                     "python run_morph_on_file_with_raw_text.py --input tempfile --output output.txt")
                 f.close()
-                f2 = open('output.txt', 'r')
+                f2 = open('output.txt', 'r', encoding='utf-8')
                 data = f2.read()
                 data = data.replace(',', ' ')
                 data = data.replace("'", ' ')
