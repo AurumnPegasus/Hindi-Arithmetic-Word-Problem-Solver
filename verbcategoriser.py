@@ -19,7 +19,12 @@ verbname = ['है', 'होना', 'खरीदा', 'दिया', 'उठ
 verbtype = ['0', '0', 't+', 't-', 't+', '+', '--', '+', 't-', 't-', '+', '+', 't+', '--', '+', 't-', 't+', 't-', '-', '++', 't+', '+', '-', '+', 't+', '+', 't+', 't-', '+', '+', 't-', '--', '-', '+', '-', '1', 't+', '+', 't+', '+', '+', 't-', '+', '--', '+', 't-', '0', '-', '+', 't-', '+', '++', '-', '-', '+', '-', '+', '+',
             '++', '+', '+', '+', '+', '0', '0', '+', '--', '+', '++', '+', '+', '+', '--', '--', '+', 't+', '+', '+', '++', 't-', '+', '0', 't-', '+', '--', 't-', '+', '+', '+', '+', '+', '--', '++', '+', '+', 't-', '+', '++', '++', '+', '0', 't-', '+', '+', 't-', 't-', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '-']
 
-for i in sentences:
+y = []
+y.append(sentences[2])
+y.append(sentences[5])
+y.append(sentences[37])
+
+for i in y:
     # Stores the list of seperated sentences within a question
     sep_sentence = tk.tokenize(i)
     # Stores the corresponding tags
@@ -34,12 +39,12 @@ for i in sentences:
             # print(tags)
             # tags[0] = tags[0].split()
             if(tags[0][1] == 'VM'):
+                os.system("touch output.txt")
                 f = open('tempfile.txt', 'w+', encoding='utf-8')
                 flag = 0
                 f.write(tags[0][0])
                 os.system(
-                    "python run_morph_on_file_with_raw_text.py --input tempfile --output output.txt")
-                f.close()
+                    "python3 run_morph_on_file_with_raw_text.py --input tempfile.txt --output output.txt")
                 f2 = open('output.txt', 'r', encoding='utf-8')
                 data = f2.read()
                 data = data.replace(',', ' ')
@@ -55,5 +60,7 @@ for i in sentences:
                             flag = 1
                             break
                 if flag == 0:
-                    print("*")
+                    print("0")
+                os.system("rm output.txt")
+
                 f2.close()
