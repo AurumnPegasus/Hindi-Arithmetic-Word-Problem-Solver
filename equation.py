@@ -11,7 +11,7 @@ parser = Parser(lang='hin')
 
 counter = 0
 x = []
-x.append('राज के पास 4 भूरा बॉल और 6 हरा बॉल थे। राज ने हैरी को तीन ब्राउन बॉल्स दिए। राज के पास कितनी  भूरा गेंदें हैं?')
+x.append('राज के पास 4 नीला बॉल और 6 हरा बॉल थे। राज ने हैरी को 3 नीला बॉल्स दिए। राज के पास कितनी नीला गेंदें हैं?')
 
 '''
 The function takes in parameters. 
@@ -32,28 +32,28 @@ what changes you need to make:
 5) if it is not a transfer, let the recepeint be the string 'none' when testing. Not that it matters but standardized
 Happy coding :) 
 '''
-c_values = [[]]
+c_values = []
 counter_eq = 0
 
 def eq_build(karta, verb_type, value, karma, karta_number, recepient):
-    
-    if karta_number == 1 :
-        if verb_type == '0' :
+    counter = 0
+    if karta_number == 1 :                                          # container [ ram ]
+        if verb_type == '0' :                               
             if counter == 0:
-                c_values.append([int(value), karma])
-                counter += 1
+                c_values.append([int(value), karma])                # value, object         c_values = [ [4, neeli ball ] ]
+                counter += 1                                        # decleration is over
             else:
-                ispresent = False
-                location = len(c_values) -1
-                for c_value in c_values:
-                    if karma in c_value[1]:
-                        ispresent = True
-                        location -= 1
+                ispresent = False           
+                location = len(c_values) -1                         # location is 0
+                for c_value in c_values:        
+                    if karma in c_value[1]:                         # karma is object, therefore m searching for if predeclared object is present in the sentence
+                        ispresent = True                            # object is repeated
+                        location -= 1                               # location is -1
                         break
                 if ispresent == True:
-                    c_values[location][0] = int(value)
+                    c_values[location][0] = int(value)              # so...m assigning particular new value to that object
                 else:
-                    c_values.append([int(value), karma])
+                    c_values.append([int(value), karma])            # m creating another entry into c_values  c_values = [ [4, neeli ball], [6, hari ball] ]
         if verb_type == 't+' :
             if counter == 0:
                 c_values.append([int(value), karma])
@@ -90,31 +90,31 @@ def eq_build(karta, verb_type, value, karma, karta_number, recepient):
                 elif ispresent_1 == False and ispresent_2 == False:    
                     c_values.append([int(value), karma])
                     c_values.append([-1*int(value), recepient])
-        if verb_type == 't-' :
+        if verb_type == 't-' :                                      # verb is di, container = [ Ram, Harry ] 
             if counter == 0:
-                c_values.append([-1*int(value), karma])
-                c_values.append([int(value), recepient])
+                c_values.append([-1*int(value), karma])             # c_values = [ [4, neeli ball], [6, hari ball], [-3, neeli ball]]
+                c_values.append([int(value), recepient])            # c_values = [ [4, neeli ball], [6, hari ball], [-3, neeli ball], [3, Harry]]
                 counter += 1
             else:
                 ispresent_1 = False
                 ispresent_2 = False
                 location_1 = len(c_values) -1
-                location_2 = len(c_values) -1
+                location_2 = len(c_values) -1                       # both are equal to 3
                 for c_value in c_values:
-                    if karma in c_value[1]:
+                    if karma in c_value[1]:                         # going through all objects where karma = neeli ball
                         ispresent_1 = True
-                        location_1 -= 1
+                        location_1 -= 1                             
                         break
                 for c_value in c_values:
-                    if recepient in c_value[1]:
+                    if recepient in c_value[1]:                     # if Harry is present, which is
                         ispresent_2 = True
                         location_2 -= 1
                         break
                 if ispresent_1 == True and ispresent_2 == True:
-                    v1 = c_values[location_1][0]
+                    v1 = c_values[location_1][0]    
                     v2 = c_values[location_2][0]
-                    c_values[location_1][0] = v1 - int(value)
-                    c_values[location_2][0] = v2 + int(value)
+                    c_values[location_1][0] = v1 - int(value)       # should not be negative, since I have already stored negative of that value
+                    c_values[location_2][0] = v2 + int(value)       # need not be added, since I have already declared Harry to be 3
                 elif ispresent_1 == True and ispresent_2 == False:
                     v1 = c_values[location_1][0]
                     c_values[location_1][0] = v1 - int(value)
@@ -219,7 +219,7 @@ for i in x:
                     containers.append(store_last_proper)
             elif(current_tag == 'NNP' or current_tag == 'NNPC' or current_tag == 'PRP'):
                 store_last_proper = current_word                           # stores the last proper noun before the quantifier
-            elif((current_tag == 'NN' or current_tag == 'NNS') and is_number):
+            elif((current_tag == 'NN' or current_tag == 'NNS' or current_tag == 'NNC') and is_number):
                 concat_string = store_adj + " " + current_word
                 objects.append(concat_string)
                 store_adj = ""
