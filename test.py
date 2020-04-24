@@ -99,6 +99,7 @@ for i in y:
                 is_number = False
             elif(current_tag == 'VM'):
                 verb_type  = categorise(current_word)
+                print(current_word)
                 print(verb_type)
                 if(verb_type != '0' and is_transfer == False):
                     is_transfer = True
