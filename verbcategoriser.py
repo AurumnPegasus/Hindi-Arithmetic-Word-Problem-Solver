@@ -19,7 +19,7 @@ for i in range(36, 39):
     y.append(sentences[i])
 
 
-for i in y:
+for i in sentences:
     # Stores the list of seperated sentences within a question
     sep_sentence = tk.tokenize(i)
     # Stores the corresponding tags
