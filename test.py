@@ -7,6 +7,7 @@ import math
 from kartakaram import kartafunc
 from verbcategoriser import categorise
 from calculate import eq_build, c_values
+from finalsentenceanalyze import finalsent
 
 tk = Tokenizer(lang='hin', split_sen=True)                                  # ensures the question is split according to sentences
 tagger = Tagger(lang='hin')
@@ -39,10 +40,11 @@ Happy coding :)
 counter_eq = 0
         
 y = []
-y.append(sentences[37])
+y.append(sentences[0])
 #print(source[37][1])
 
 for i in y:
+    print(i)
     sep_sentence = tk.tokenize(i)                                           #  Stores the list of seperated sentences within a question
     counter += 1
     if(counter == 2):
@@ -50,7 +52,7 @@ for i in y:
     tag_sep_sent = []                                                       # Stores the corresponding tags
     for j in sep_sentence:
         tag_sep_sent.append(tagger.tag(j))
-    print(tag_sep_sent)
+    # print(tag_sep_sent)
     containers = []                                                         # Proper Nouns
     values = []                                                             # Numbers
     objects = []                                                            # Common Nouns
@@ -64,7 +66,7 @@ for i in y:
         is_number = False
         store_adj = ""                                                      # Stores the adjective assosciated with a object
         store_last_proper = ""                                              # Stores the required proper noun, which is the first to the right of QC
-        verb_list = []
+        
         for k in range(0, len(current_tagset)-1):   
             current_word = current_sent[k]
             current_tag = current_tagset[k][1]
@@ -99,17 +101,20 @@ for i in y:
                 is_number = False
             elif(current_tag == 'VM'):
                 verb_type  = categorise(current_word)
-                print(current_word)
-                print(verb_type)
                 if(verb_type != '0' and is_transfer == False):
                     is_transfer = True
                 
+        if(j==len(sep_sentence)-1):
+            # print(current_sent)
+            print(assign)
+            print(is_transfer)
+            finalsent(current_sent, assign, is_transfer)
 
-    print(i)
-    print(containers)
-    print(values)
-    print(objects)
-    print(assign)
+    #print(i)
+    # print(containers)
+    # print(values)
+    # print(objects)
+    # print(assign)
 
 
 
