@@ -1,21 +1,16 @@
 Verb Categories in the original doc
 0:
-    used to define the number of things possessed by the person
-    I have 10 coins
+    Declerative verb. Initiales the container
+    eg: Shivansh has 10 apples.
 t+:
-    Something that is acquired(addition) from someone else(transfer)
-    I bought 10 pens from Shivansh.
+    A positive transfer involving two people.
+    eg: Suyash bought 10 apples from Tejasvi.
 +:
-    being used as a verb for Something increasing(addition) in quantity
-    I grew by 6 feet.
-++:
-    being used to combine smaller parts together to form a bigger object
-    eg-build a house
+    A positive change involving only 1 person.
+    eg: I grew by 6 feet.
 t-:
-    being used as a verb of giving(subtraction) Something to someone else(transfer)
-    eg-feed
+    A negative transfer involving two people.
+    eg: Tejasvi gave Suyash 10 pens.
 -:
-    being used as a verb of splitting into parts/breaking up
-    eg-cracked
---:
-    being used as a verb for being depleted/finished
+    A negative change involving only 1 person.
+    eg: Shivansh lost 2 pens on his way.
