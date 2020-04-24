@@ -20,26 +20,28 @@ verbtype = ['0', '0', 't+', 't-', 't+', '+', '--', '+', 't-', 't-', '+', '+', 't
             '++', '+', '+', '+', '+', '0', '0', '+', '--', '+', '++', '+', '+', '+', '--', '--', '+', 't+', '+', '+', '++', 't-', '+', '0', 't-', '+', '--', 't-', '+', '+', '+', '+', '+', '--', '++', '+', '+', 't-', '+', '++', '++', '+', '0', 't-', '+', '+', 't-', 't-', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '-']
 
 
-def kartafunc(sentence):
-    noun = [], tagg = []
-    flag = 0
-    karta = null, karma = null, recepient = null
-    for words in sentence:
-        tags = tagger.tag(words.split())
-        if(tags[0][1] == 'NN' or tags[0][1] == 'NNP' or tags[0][1] == 'NNS'):
-            ind = sentence.index(words)
-            if(sentence[ind+1] == 'ने'):
-                karta = words
-            elif(sentence[ind+1] == 'को'):
-                recepient = words
-            elif(tagger.tag(sentence[ind-1]) == 'QF'):
-                karma = words
+def kartafunc(sent):
+    karta = 0
+    karma = 0
+    recepient = 0
+    sent = "राम ने राज को 10 किताबें दीं"
+    sent = tk.tokenize(sent)
+    tagged_sent = tagger.tag(sent[0])
+    for words in tagged_sent:
+        if(words[1] == 'NN' or words[1] == 'NNP' or words[1] == 'NNS' or words[1] == 'NNPC'):
+            print(words[0])
+            ind = tagged_sent.index(words)
+            if(tagged_sent[ind+1][0] == 'ने'):
+                karta = words[0]
+            elif(tagged_sent[ind+1][0] == 'को'):
+                recepient = words[0]
+            elif(tagged_sent[ind-1][1] == 'QC'):
+                karma = words[0]
 
-        elif (tags[0][1] == 'PRP'):
+        elif (words[1] == 'PRP'):
             os.system("touch output.txt")
             f = open('tempfile.txt', 'w+', encoding='utf-8')
-            flag = 0
-            f.write(tags[0][0])
+            f.write(words[0])
             os.system(
                 "python3 run_morph_on_file_with_raw_text.py --input tempfile.txt --output output.txt")
             f2 = open('output.txt', 'r', encoding='utf-8')
@@ -50,3 +52,6 @@ def kartafunc(sentence):
             elif(data.__contains__('ko')):
                 recepient = words
     print(karta, karma, recepient)
+
+#print(sentences[18])
+kartafunc(sentences[18])
