@@ -53,5 +53,3 @@ def kartafunc(sent):
                 recepient = words
     print(karta, karma, recepient)
 
-#print(sentences[18])
-kartafunc(sentences[18])
