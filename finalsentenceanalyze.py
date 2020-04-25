@@ -12,12 +12,16 @@ tk = Tokenizer(lang='hin', split_sen=True)
 tagger = Tagger(lang='hin')
 
 
-def finalsent(sent, assign, is_transfer):
+def finalsent(sent, assign, is_transfer, default_change):
     nouns = []
+    positive = ['कुल', 'मिलकर', 'मिलाकर', 'अखंडित']
+    negative = ['पहले','पेहले', 'ज़्यादा', 'ज्यादा', 'बाकी', 'खर्च', 'खरीदीं', 'बच', 'खरीदी']
     tagged_sent = tagger.tag(sent)
     foundcont = 0
-    foundobj = 0
+    foundobj = "*"
+    got_adj = ""
     qf_flag = 0
+    got_one = False
     # print(tagged_sent)
     if is_transfer == True:
         for words in tagged_sent:
@@ -33,48 +37,81 @@ def finalsent(sent, assign, is_transfer):
             elem[0] = elem[0].strip()
             elem[2] = elem[2].strip()
             if(elem[0] == foundcont and elem[2] == foundobj):
-                print(float(elem[1]))
                 return float(elem[1])
         sum = 0
         for elem in assign:
             elem[2] = elem[2].strip()
             if(elem[2] == foundobj):
                 sum = sum + float(elem[1])
-        print(sum)
         return sum
     else:
         operation = '+'  # taking + to be default op
+        if(default_change):
+            operation = '-'
         for words in tagged_sent:
-            if(words[0] == 'कुल' or words[0] == 'मिलकर' or words[0] == 'मिलाकर'):
-                operation = '+'
-                break
-            if words[0] == 'पहले' or words[0] == 'पेहले' or words[0] == 'ज़्यादा' or words[0] == 'ज्यादा':
-                operation = '-'
-                break
+            if(default_change == False and got_one == False):
+                for check in positive:
+                    if words[0] == check:
+                        operation = '+'
+                        got_one = True
+                        break
+            if(got_one == False):
+                for check in negative:
+                    if(words[0] == check):
+                        operation = '-'
+                        break
         for words in tagged_sent:
-            if words[1] == 'QF':
-                qf_flag = 1
-            if (words[1] == 'NN' or words[1] == 'NNP' or words[1] == 'NNS' or words[1] == 'NNPC' or words[1] == 'PRP') and qf_flag == 1:
+            if words[0] == "$":
                 foundobj = words[0].strip()
                 break
+            if words[1] == 'QF' or words[1] == 'WQ':
+                qf_flag = 1
+            if words[1] == 'JJ' and qf_flag == 1:
+                got_adj = words[1]
+            if (words[1] == 'NN' or words[1] == 'NNP' or words[1] == 'NNS' or words[1] == 'NNPC' or words[1] == 'PRP') and qf_flag == 1:
+                foundobj = got_adj.strip() + " " + words[0].strip()
+                break
         sum = 0
+        have_answer = False
+        foundobj = foundobj.strip()
+        # print(foundobj)
+        # print(operation)
         if operation == '-':
             firstelemflag = 0
             for elem in assign:
                 elem[2] = elem[2].strip()
-                if(elem[2] == foundobj):
+                if(elem[2].endswith(foundobj)):
                     if firstelemflag == 0:
                         sum = sum + float(elem[1])
                         firstelemflag = 1
+                        have_answer = True
                     else:
                         sum = sum - float(elem[1])
-            print(sum)
+            if have_answer == False:
+                foundobj = assign[0][2].strip()
+                firstelemflag = 0
+                for elem in assign:
+                    elem[2] = elem[2].strip()
+                    if(elem[2].endswith(foundobj)):
+                        if firstelemflag == 0:
+                            sum = sum + float(elem[1])
+                            firstelemflag = 1
+                            have_answer = True
+                        else:
+                            sum = sum - float(elem[1])
             return sum
         else:
             sum = 0
             for elem in assign:
                 elem[2] = elem[2].strip()
-                if(elem[2] == foundobj):
+                if(elem[2].endswith(foundobj)):
                     sum = sum + float(elem[1])
-            print(sum)
+                    have_answer = True
+            if have_answer == False:
+                foundobj = assign[0][2]
+                for elem in assign:
+                    elem[2] = elem[2].strip()
+                    if(elem[2].endswith(foundobj)):
+                        sum = sum + float(elem[1])
+                        have_answer = True
             return sum
