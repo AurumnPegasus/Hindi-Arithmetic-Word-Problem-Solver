@@ -20,8 +20,7 @@ def finalsent(sent, assign, is_transfer, default_change):
     got_adj = ""
     qf_flag = 0
     got_one = False
-    # print(tagged_sent)
-    if is_transfer == True:
+    if is_transfer == True:                                                 # there is a transfer occuring
         for index in range(0, len(tagged_sent)-1):
             current_word = tagged_sent[index][0].strip()
             current_tag = tagged_sent[index][1] 
@@ -42,7 +41,7 @@ def finalsent(sent, assign, is_transfer, default_change):
                 qf_flag = 1
                 foundcont = container[len(container)-1].strip()
         for elem in assign:
-            elem[0] = elem[0].strip()
+            elem[0] = elem[0].strip()                                      # have to make it container specific
             elem[2] = elem[2].strip()
             if(elem[0].endswith(foundcont) and elem[2].endswith(foundobj)):
                 return float(elem[1])
@@ -53,17 +52,17 @@ def finalsent(sent, assign, is_transfer, default_change):
                 sum = sum + float(elem[1])
         return sum
     else:
-        operation = '+'  # taking + to be default op
+        operation = '+'                                                    # taking + to be default op
         if(default_change):
             operation = '-'
         for words in tagged_sent:
-            if(default_change == False and got_one == False):
+            if(default_change == False and got_one == False):               # if I havent already found out negative 
                 for check in positive:
                     if words[0] == check:
                         operation = '+'
                         got_one = True
-                        break
-            if(got_one == False):
+                        break           
+            if(got_one == False):                                           # If I havent already found out positive
                 for check in negative:
                     if(words[0] == check):
                         operation = '-'
@@ -82,12 +81,10 @@ def finalsent(sent, assign, is_transfer, default_change):
         sum = 0
         have_answer = False
         foundobj = foundobj.strip()
-        # print(foundobj)
-        # print(operation)
         if operation == '-':
             firstelemflag = 0
             for elem in assign:
-                elem[2] = elem[2].strip()
+                elem[2] = elem[2].strip()                                   # object specific
                 if(elem[2].endswith(foundobj)):
                     if firstelemflag == 0:
                         sum = sum + float(elem[1])
@@ -95,7 +92,7 @@ def finalsent(sent, assign, is_transfer, default_change):
                         have_answer = True
                     else:
                         sum = sum - float(elem[1])
-            if have_answer == False:
+            if have_answer == False:                                        # cant find object, assume object of first item is the one
                 foundobj = assign[0][2].strip()
                 firstelemflag = 0
                 for elem in assign:
@@ -111,11 +108,11 @@ def finalsent(sent, assign, is_transfer, default_change):
         else:
             sum = 0
             for elem in assign:
-                elem[2] = elem[2].strip()
+                elem[2] = elem[2].strip()                                   # object specific
                 if(elem[2].endswith(foundobj)):
                     sum = sum + float(elem[1])
                     have_answer = True
-            if have_answer == False:
+            if have_answer == False:                                        # cant find object, assume object of first item is the one
                 foundobj = assign[0][2]
                 for elem in assign:
                     elem[2] = elem[2].strip()

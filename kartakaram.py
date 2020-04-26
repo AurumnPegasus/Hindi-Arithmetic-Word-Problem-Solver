@@ -9,32 +9,21 @@ from os import system
 # ensures the question is split according to sentences
 tk = Tokenizer(lang='hin', split_sen=True)
 tagger = Tagger(lang='hin')
-# parser = Parser(lang='hin')
 
 counter = 0
-
-
-verbname = ['है', 'होना', 'खरीदा', 'दिया', 'उठाया', 'बढा', 'खर्चा', 'ढूंढा', 'भुगतान', 'उगाया', 'जा', 'खेला', 'ला', 'काटा', 'काम', 'बेचा', 'खरीदना', 'रखा', '*', 'बनाया', '*', 'पकडा', 'परोसा', 'कमाया', 'उधार', 'बचाया', 'मिला', 'जा', 'उपस्थित', 'देखा', 'रखा', 'खाया', 'कीमत', 'जीता', 'हारा', 'किया', 'किराया', 'ज़रूरत', 'लिया', 'खड़ा', 'खतम', 'डालना', 'बुलाया', 'तोडा', 'चमका', 'रखना', 'शुरु', 'बाटना', 'आना', 'भरना', 'साफ', 'जोड़ना', 'हार', 'टूटना', 'निशचित', 'फटना', 'शुरु', 'खतम', 'इकठ्ठा', 'ज़रूरत',
-            'चाहना', '*', 'पूछना', 'नियंत्रित', 'शामिल', 'भार', 'इस्तमाल', 'चल', 'बनाना', 'बारिश', 'भागा', 'दौडा', 'टपकना', 'पीना', 'चढ़ना', 'फसल', 'दौडा', 'उतरना', 'इकठ्ठा', 'डालना', 'रंगना', 'बाकी', 'वापस', 'नापा', 'देखा', 'गिराना', 'हिलाना', 'जोडा', '*', '*', 'ढकना', 'कमना', 'बढाना', '*', 'झेलना', 'खिलाना', 'पढना', 'ठीक', 'बनाना', 'जाना', 'स्वामित्व', '*', 'बसना', 'अंकित', 'बोना', 'देना', 'जीना', 'उठाना', '*', 'गोद', 'चलाना', '*', 'परिणाम', 'खरीदना', 'खरीदना', 'ज़रुरत', 'घूमना', 'भागना', 'दौडना', 'फाडना']
-verbtype = ['0', '0', 't+', 't-', 't+', '+', '--', '+', 't-', 't-', '+', '+', 't+', '--', '+', 't-', 't+', 't-', '-', '++', 't+', '+', '-', '+', 't+', '+', 't+', 't-', '+', '+', 't-', '--', '-', '+', '-', '1', 't+', '+', 't+', '+', '+', 't-', '+', '--', '+', 't-', '0', '-', '+', 't-', '+', '++', '-', '-', '+', '-', '+', '+',
-            '++', '+', '+', '+', '+', '0', '0', '+', '--', '+', '++', '+', '+', '+', '--', '--', '+', 't+', '+', '+', '++', 't-', '+', '0', 't-', '+', '--', 't-', '+', '+', '+', '+', '+', '--', '++', '+', '+', 't-', '+', '++', '++', '+', '0', 't-', '+', '+', 't-', 't-', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '+', '-']
-
 
 def kartafunc(sent):
     karta = 0
     karma = 0
     recepient = 0
     is_positve = '0'
-    #sent = tk.tokenize(sent)
-    #print(sent)
     tagged_sent = tagger.tag(sent)
-    #print(tagged_sent)
     for words in range(0, len(tagged_sent)-1):
         current_word = tagged_sent[words][0]
         current_tag = tagged_sent[words][1]
         next_word = tagged_sent[words+1][0]
         next_tag = tagged_sent[words+1][1]
-        if( current_tag == 'NNP' or current_tag == 'NNPC'):
+        if( current_tag == 'NNP' or current_tag == 'NNPC'):                 # gets subject and object of sentence by identifying case markers
             if(next_word == 'ने'):
                 karta = current_word
             elif(next_word == 'को'):
@@ -50,7 +39,7 @@ def kartafunc(sent):
             elif(next_tag == 'NN' or next_tag =='NNP' or next_tag == 'NNPC' or next_tag == 'NNS'):
                 karma = next_word
 
-        elif (current_tag == 'PRP'):
+        elif (current_tag == 'PRP'):                                        # in case case markers are used as morphemes
             os.system("touch output.txt")
             f = open('tempfile.txt', 'w+', encoding='utf-8')
             f.write(current_word)
