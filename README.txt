@@ -19,3 +19,4 @@ The necessary tools are now installed, and the application can now be used.
 $ python3 equation.py
 
 The Solver will run and display the output and answers accordingly.
+Happy solving :)
