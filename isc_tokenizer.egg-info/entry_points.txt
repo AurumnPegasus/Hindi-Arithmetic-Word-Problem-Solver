@@ -1,3 +1,0 @@
-[console_scripts]
-isc-tokenizer = isc_tokenizer:main
-
