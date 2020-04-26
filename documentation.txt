@@ -1,16 +1,32 @@
-The application Hindi Arithmetic Word Problem Solver aims to use a rule-based and statistical approach to solve arithmetic word problems in Hindi Language. 
+The application Hindi Arithmetic Word Problem Solver aims to use a rule-based and statistical approach
+to solve arithmetic word problems in Hindi Language. 
 
 The code consists of 5 modules-
 
-equation.py - This module is the first part to get executed and is the part from where all the other modules are called, and does the function of identifying and seprating the containers, objects, and their values/quantities from each sentence. Further, it also contains the function which operates upon the operations occuring in the word problem and changes the values of the containers appropriately. After calling all the functinos, this module checks whether the answer calculated was correct or not, and displays the accuracy achieved by the system.
+equation.py:
+This module is the first part to get executed and is the part from where all the other modules are called,
+and does the function of identifying and seprating the containers, objects, and their values/quantities from each sentence.
+Further, it also contains the function which operates upon the operations occuring in the word problem and
+changes the values of the containers appropriately. After calling all the functinos, this module checks whether the answer
+calculated was correct or not, and displays the accuracy achieved by the system.
 
-kartakaram.py - This module takes a sentence, and identifies the karta, karam and sampradan in the sentence with the help of morphanalyzing and searching for vibhaktis as suffixes or seprate words.
+kartakaram.py:
+This module takes a sentence, and identifies the karta, karam and sampradan in the sentence with 
+the help of morphanalyzing and searching for vibhaktis as suffixes or seprate words.
 
-finalsentence.py - This module receives the final sentence, i.e. the question that needs to be answered by the word problem, along with the list of containers involved in the problem. Based on certain rules, and whether the final question requires any more operations, it finds the answer and returns it to the calling function.
+finalsentence.py:
+This module receives the final sentence, i.e. the question that needs to be answered by the word problem,
+along with the list of containers involved in the problem.
+Based on certain rules, and whether the final question requires any more operations, it finds the answer and returns it
+to the calling function.
 
-source.py - This module contains list of all the word-problems that are taken as the test data, along with their corresponding answers for checking the accuracy.
+source.py: 
+This module contains list of all the word-problems that are taken as the test data,
+along with their corresponding answers for checking the accuracy.
 
-eng-hin_numbers.py - This is a module being used to print the final answer of each question in hindi as well as in english numerals for better readibility by a native Hindi speaker.
+eng-hin_numbers.py: 
+This is a module being used to print the final answer of each question in hindi as well as in english numerals
+for better readibility by a native Hindi speaker.
 
 ----INSTALL INSTRUCTIONS----
 
