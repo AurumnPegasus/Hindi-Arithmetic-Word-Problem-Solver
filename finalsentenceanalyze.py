@@ -4,8 +4,6 @@ from isc_tokenizer import Tokenizer
 from isc_tagger import Tagger
 import math
 from kartakaram import kartafunc
-from verbcategoriser import categorise
-from calculate import eq_build, c_values
 
 # ensures the question is split according to sentences
 tk = Tokenizer(lang='hin', split_sen=True)
@@ -13,19 +11,11 @@ tagger = Tagger(lang='hin')
 
 
 def finalsent(sent, assign, is_transfer, default_change):
-<<<<<<< HEAD
     container = []
     positive = ['कुल', 'मिलकर', 'मिलाकर', 'अखंडित']
     negative = ['पहले','पेहले', 'ज़्यादा', 'ज्यादा', 'बाकी', 'खर्च', 'खरीदीं', 'बच', 'खरीदी', 'बची']
     tagged_sent = tagger.tag(sent)
     foundcont = "*"
-=======
-    nouns = []
-    positive = ['कुल', 'मिलकर', 'मिलाकर', 'अखंडित']
-    negative = ['पहले','पेहले', 'ज़्यादा', 'ज्यादा', 'बाकी', 'खर्च', 'खरीदीं', 'बच', 'खरीदी']
-    tagged_sent = tagger.tag(sent)
-    foundcont = 0
->>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
     foundobj = "*"
     got_adj = ""
     qf_flag = 0
@@ -46,11 +36,7 @@ def finalsent(sent, assign, is_transfer, default_change):
                         break
             if current_tag == 'NN' or current_tag == 'NNP' or current_tag == 'NNS' or current_tag == 'NNPC':
                 if qf_flag == 1:
-<<<<<<< HEAD
                     foundobj = current_word.strip()        
-=======
-                    foundobj = words[0].strip()
->>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
                     break
             elif current_tag == 'QF':
                 qf_flag = 1
@@ -58,20 +44,12 @@ def finalsent(sent, assign, is_transfer, default_change):
         for elem in assign:
             elem[0] = elem[0].strip()
             elem[2] = elem[2].strip()
-<<<<<<< HEAD
             if(elem[0].endswith(foundcont) and elem[2].endswith(foundobj)):
-=======
-            if(elem[0] == foundcont and elem[2] == foundobj):
->>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
                 return float(elem[1])
         sum = 0
         for elem in assign:
             elem[2] = elem[2].strip()
-<<<<<<< HEAD
             if(elem[2].endswith(foundobj)):
-=======
-            if(elem[2] == foundobj):
->>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
                 sum = sum + float(elem[1])
         return sum
     else:

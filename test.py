@@ -5,8 +5,6 @@ from isc_tagger import Tagger
 from isc_parser import Parser
 import math
 from kartakaram import kartafunc
-from verbcategoriser import categorise
-from calculate import eq_build, c_values
 from finalsentenceanalyze import finalsent
 
 tk = Tokenizer(lang='hin', split_sen=True)                                  # ensures the question is split according to sentences
@@ -16,14 +14,125 @@ parser = Parser(lang='hin')
 correct = 0
 total = 0
 negative = ['टूटे', 'खर्च', 'देने', 'नहीं', 'फटे']
+wrong = []
+counter_eq = 0
+
+
+def eq_builder(karta, karma, verb_type, value, sampradaan, c_values):
+    if verb_type == 't-':
+        values = []
+        values_s = []
+        is_karta_present = False
+        is_karma_present_1 = False
+        is_karma_present_2 = False
+        is_sampradaan_present = False
+        location_karta = 0
+        location_karma_1 = 0
+        location_karma_2 = 0
+        location_sampradaan = 0
+
+        for c_value in c_values:
+            if c_value[0] == karta:
+                is_karta_present = True
+                values.append(int(location_karta))
+            if c_value[0] == sampradaan:
+                is_sampradaan_present = True
+                values_s.append(int(location_sampradaan))
+            location_karta += 1
+            location_sampradaan += 1
+
+        if is_karta_present:
+            for location in values:
+                if c_values[location][2] == karma:
+                    is_karma_present_1 = True
+                    break
+                location_karma_1 += 1
+        if is_sampradaan_present:
+            for location in values_s:
+                if c_values[location][2] == karma:
+                    is_karma_present_2 = True
+                    break
+                location_karma_2 += 1
+
+        if is_karta_present and is_karma_present_1 and is_karma_present_2 and is_sampradaan_present:
+            present_1 = float(c_values[values[location_karma_1]][1])
+            present_2 = float(c_values[values_s[location_karma_2]][1])
+            c_values[values[location_karma_1]] = [karta, present_1 + float(value), karma]
+            c_values[values_s[location_karma_2]] = [sampradaan, present_2 - float(value), karma]
+        elif is_karta_present and is_karma_present_1:
+            present_1 = float(c_values[values[location_karma_1]][1])
+            c_values[values[location_karma_1]] = [karta, present_1 + float(value), karma]
+            c_values.append([sampradaan, -1*float(value), karma])
+        elif is_karma_present_2 and is_sampradaan_present:
+            present_2 = float(c_values[values_s[location_karma_2]][1])
+            c_values[values_s[location_karma_2]] = [sampradaan, present_2 - float(value), karma]
+            c_values.append([karta, float(value), karma])
+        else:
+            c_values.append([karta, float(value), karma])
+            c_values.append([sampradaan, -1*float(value), karma])
+
+    if verb_type == 't+':
+        values = []
+        values_s = []
+        is_karta_present = False
+        is_karma_present_1 = False
+        is_karma_present_2 = False
+        is_sampradaan_present = False
+        location_karta = 0
+        location_karma_1 = 0
+        location_karma_2 = 0
+        location_sampradaan = 0
+
+        for c_value in c_values:
+            if c_value[0] == karta:
+                is_karta_present = True
+                values.append(int(location_karta))
+            if c_value[0] == sampradaan:
+                is_sampradaan_present = True
+                values_s.append(int(location_sampradaan))
+            location_karta += 1
+            location_sampradaan += 1
+
+        if is_karta_present:
+            for location in values:
+                if c_values[location][2] == karma:
+                    is_karma_present_1 = True
+                    break
+                location_karma_1 += 1
+        if is_sampradaan_present:
+            for location in values_s:
+                if c_values[location][2] == karma:
+                    is_karma_present_2 = True
+                    break
+                location_karma_2 += 1
+
+        if is_karta_present and is_karma_present_1 and is_karma_present_2 and is_sampradaan_present:
+            present_1 = float(c_values[values[location_karma_1]][1])
+            present_2 = float(c_values[values_s[location_karma_2]][1])
+            c_values[values[location_karma_1]] = [karta, present_1 - float(value), karma]
+            c_values[values_s[location_karma_2]] = [sampradaan, present_2 + float(value), karma]
+        elif is_karta_present and is_karma_present_1:
+            present_1 = float(c_values[values[location_karma_1]][1])
+            c_values[values[location_karma_1]] = [karta, present_1 - float(value), karma]
+            c_values.append([sampradaan, float(value), karma])
+        elif is_karma_present_2 and is_sampradaan_present:
+            present_2 = float(c_values[values_s[location_karma_2]][1])
+            c_values[values_s[location_karma_2]] = [sampradaan, present_2 + float(value), karma]
+            c_values.append([karta, -1*float(value), karma])
+        else:
+            c_values.append([karta, -1*float(value), karma])
+            c_values.append([sampradaan, float(value), karma])
         
+    return c_values
+
 y = []
-for i in range(99,100):
+for i in range(0,100):
     y.append(source[i])
     total +=1 
 
-for i in source:
-    print(i[0])
+
+for i in y:
+    #print(i[0])
     sep_sentence = tk.tokenize(i[0])                                           #  Stores the list of seperated sentences within a question
     tag_sep_sent = []                                                       # Stores the corresponding tags
     for j in sep_sentence:
@@ -83,17 +192,15 @@ for i in source:
                 store_adj = ""
                 is_number = False
                 continue
-            if(current_tag == 'JJ' and (next_tag == 'NN' or next_tag == 'NNS' ) and is_number):
+            if(current_tag == 'JJ' and (next_tag == 'NN' or next_tag == 'NNS' or next_tag == 'NNP' ) and is_number):
                 store_adj = current_word
                 continue
             if(current_tag == 'QC'):                    
-                if( current_word[0].isnumeric()):                      
+                if( current_word[0].isnumeric()):                    
                     values.append(current_word)
                     is_number = True
                     containers.append(store_last_proper)
-            elif(current_tag == 'NNP' or current_tag == 'NNPC' or current_tag == 'PRP'):
-                store_last_proper = current_word                           # stores the last proper noun before the quantifier
-            elif((current_tag == 'NN' or current_tag == 'NNS') and is_number):
+            elif((current_tag == 'NN' or current_tag == 'NNS' or current_tag == 'NNP') and is_number):
                 concat_string = store_adj + " " + current_word
                 objects.append(concat_string)
                 change_sign = False
@@ -108,17 +215,35 @@ for i in source:
                 assign.append(r)
                 store_adj = ""
                 is_number = False
+            elif(current_tag == 'NNP' or current_tag == 'NNPC' or current_tag == 'PRP'):
+                store_last_proper = current_word                           # stores the last proper noun before the quantifier
             elif(current_tag == 'VM'):
+<<<<<<< HEAD
+                l = kartafunc(current_sent)
+                # print(current_sent)
+                # print(assign)
+                # print(l)
+                if(l[0] !=0 and l[1]!=0 and l[2]!=0):
+=======
                 verb_type  = categorise(current_word)
                 if(verb_type != '0' and is_transfer == False):
+>>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
                     is_transfer = True
+                    temp = []
+                    for index in range(0, len(assign)-1):
+                        temp.append(assign[index])
+                    assign = eq_builder(l[0], l[1], l[3], values[len(values)-1], l[2], temp)
                 
         if(j==len(sep_sentence)-1):
             # print(current_sent)
             if(len(assign) != rem_size and came_here == True):
                 default_change = True
             # print(default_change)
+<<<<<<< HEAD
+            # print(assign)
+=======
             print(assign)
+>>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
             store_ans = finalsent(current_sent, assign, is_transfer, default_change)
             store_ans = abs(store_ans)
             actual_ans = float(i[1])
@@ -131,15 +256,36 @@ for i in source:
                 correct += 1
             else:
                 print("WRONG")
+<<<<<<< HEAD
+                wrong.append((tag_sep_sent, assign, actual_ans, store_ans))
+
+    # print(i)
+=======
 
     #print(i)
+>>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
     # print(containers)
     # print(values)
     # print(objects)
     # print(assign)
+<<<<<<< HEAD
 
 print(total)
 print(correct)
 acc = (correct)/(total)
 print("ACCURACY ")
 print(acc*100)
+
+# for i in wrong:
+#     print(i[0])
+#     print(i[1])
+#     print(i[2])
+#     print(i[3])
+=======
+
+print(total)
+print(correct)
+acc = (correct)/(total)
+print("ACCURACY ")
+print(acc*100)
+>>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
