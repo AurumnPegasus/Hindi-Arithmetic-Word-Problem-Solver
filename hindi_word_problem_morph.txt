@@ -1,0 +1,44 @@
+<Sentence id='1'>			
+1	जोआन		<fs af='जोआन,unk,,,,,,'>
+2	को		<fs af='को,psp,,,,,,'>
+3	समुद्र		<fs af='समुद्र,n,m,sg,3,d,0,0'>|<fs af='समुद्र,n,m,pl,3,d,0,0'>|<fs af='समुद्र,n,m,sg,3,o,0,0'>
+4	तट		<fs af='तट,n,m,sg,3,d,0,0'>|<fs af='तट,n,m,pl,3,d,0,0'>|<fs af='तट,n,m,sg,3,o,0,0'>
+5	पर		<fs af='पर,n,m,sg,3,d,0,0'>|<fs af='पर,n,m,pl,3,d,0,0'>|<fs af='पर,n,m,sg,3,o,0,0'>|<fs af='पर,avy,,,,,,'>|<fs af='पर,psp,,,,,,'>
+6	70.0		<fs af='70.0,num,,,,,,'>
+7	समुद्र		<fs af='समुद्र,n,m,sg,3,d,0,0'>|<fs af='समुद्र,n,m,pl,3,d,0,0'>|<fs af='समुद्र,n,m,sg,3,o,0,0'>
+8	के		<fs af='का,psp,m,sg,,o,का,kA'>|<fs af='का,psp,m,pl,,d,का,kA'>|<fs af='का,psp,m,pl,,o,का,kA'>
+9	किनारे		<fs af='किनारा,n,m,pl,3,d,0,0'>|<fs af='किनारा,n,m,sg,3,o,0,0'>
+10	मिले		<fs af='मिला,adj,m,sg,,o,,'>|<fs af='मिला,adj,m,pl,,d,,'>|<fs af='मिला,adj,m,pl,,o,,'>|<fs af='मिल,v,any,sg,2,,ए,e'>|<fs af='मिल,v,any,sg,3,,ए,e'>|<fs af='मिल,v,m,pl,any,,या,yA'>
+11	.		<fs af='.,punc,,,,,,'>
+</Sentence>			
+			
+<Sentence id='2'>			
+1	उसने		<fs af='उसना,adj,m,sg,,o,,'>|<fs af='उसना,adj,m,pl,,d,,'>|<fs af='उसना,adj,m,pl,,o,,'>|<fs af='उसना,n,m,pl,3,d,0,0'>|<fs af='उसना,n,m,sg,3,o,0,0'>|<fs af='वह,pn,any,sg,3,o,ने,ne'>
+2	सैम		<fs af='सैम,unk,,,,,,'>
+3	को		<fs af='को,psp,,,,,,'>
+4	अपने		<fs af='अपना,pn,any,sg,1,o,का,kA' agr_gen='m'  agr_num='pl'  agr_cas='d'>|<fs af='अपना,pn,any,sg,1,o,का,kA' agr_cas='o'  agr_num='sg'  agr_gen='m'>|<fs af='अपना,pn,any,sg,1,o,का,kA' agr_num='pl'  agr_gen='m'  agr_cas='o'>|<fs af='अपना,adj,m,sg,,o,,'>|<fs af='अपना,adj,m,pl,,d,,'>|<fs af='अपना,adj,m,pl,,o,,'>
+5	कुछ		<fs af='कुछ,adv,,,,,,'>|<fs af='कुछ,adj,any,any,,any,,'>|<fs af='कुछ,n,m,sg,3,d,0,0'>|<fs af='कुछ,n,m,pl,3,d,0,0'>|<fs af='कुछ,n,m,sg,3,o,0,0'>|<fs af='कुछ,n,m,pl,3,o,0,0'>
+6	सीशेल्स		<fs af='सीशेल्स,unk,,,,,,'>
+7	दिए		<fs af='दे,v,any,sg,2,,ए,e'>|<fs af='दे,v,any,sg,3,,ए,e'>|<fs af='दे,v,m,pl,any,,या,yA'>
+8	.		<fs af='.,punc,,,,,,'>
+</Sentence>			
+			
+<Sentence id='3'>			
+1	उसके		<fs af='उसक,v,any,sg,2,,ए,e'>|<fs af='उसक,v,any,sg,3,,ए,e'>|<fs af='उसक,v,m,pl,any,,या,yA'>|<fs af='वह,pn,any,sg,3,o,का,kA' agr_gen='m'  agr_cas='d'  agr_num='pl'>|<fs af='वह,pn,any,sg,3,o,का,kA' agr_gen='m'  agr_cas='o'  agr_num='sg'>|<fs af='वह,pn,any,sg,3,o,का,kA' agr_num='pl'  agr_cas='o'  agr_gen='m'>
+2	पास		<fs af='पास,adv,,,,,,'>|<fs af='पास,adj,any,any,,any,,'>|<fs af='पास,n,m,sg,3,d,0,0'>|<fs af='पास,n,m,pl,3,d,0,0'>|<fs af='पास,n,m,sg,3,o,0,0'>|<fs af='पास,n,m,pl,3,o,0,0'>
+3	27.0		<fs af='27.0,num,,,,,,'>
+4	सीशेल्स		<fs af='सीशेल्स,unk,,,,,,'>
+5	हैं		<fs af='है,v,any,pl,1,,है,hE'>|<fs af='है,v,any,pl,3,,है,hE'>|<fs af='है,v,any,any,2,,है,hE' hon='y'>
+6	.		<fs af='.,punc,,,,,,'>
+</Sentence>			
+			
+<Sentence id='4'>			
+1	सैम		<fs af='सैम,unk,,,,,,'>
+2	को		<fs af='को,psp,,,,,,'>
+3	उसने		<fs af='उसना,adj,m,sg,,o,,'>|<fs af='उसना,adj,m,pl,,d,,'>|<fs af='उसना,adj,m,pl,,o,,'>|<fs af='उसना,n,m,pl,3,d,0,0'>|<fs af='उसना,n,m,sg,3,o,0,0'>|<fs af='वह,pn,any,sg,3,o,ने,ne'>
+4	कितने		<fs af='कितना,adj,m,sg,,o,,'>|<fs af='कितना,adj,m,pl,,d,,'>|<fs af='कितना,adj,m,pl,,o,,'>|<fs af='कितना,n,m,pl,3,d,0,0'>|<fs af='कितना,n,m,sg,3,o,0,0'>
+5	सीशेल		<fs af='सीशेल,unk,,,,,,'>
+6	दिए		<fs af='दे,v,any,sg,2,,ए,e'>|<fs af='दे,v,any,sg,3,,ए,e'>|<fs af='दे,v,m,pl,any,,या,yA'>
+7	?		<fs af='?,punc,,,,,,'>
+</Sentence>			
+			

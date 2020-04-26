@@ -23,7 +23,6 @@ else i find where it already exists and make the required changes. You can read 
 for transfer 
 the extra paramter the recepient is also required
 so i do the same thing as above but change the values for the recepient too
-
 what changes you need to make:
 1) make it only a list of lists or a list of list of lists (do not try this pls)
 2) in the list make sure you add another element in the lists which takes in the karta as input too.
@@ -32,6 +31,10 @@ what changes you need to make:
 5) if it is not a transfer, let the recepeint be the string 'none' when testing. Not that it matters but standardized
 Happy coding :) 
 '''
+<<<<<<< HEAD
+
+            
+=======
 c_values = []
 counter_eq = 0
 
@@ -86,6 +89,7 @@ def eq_builder(karta, karma, verb_type, value, sampradaan):
             c_values[values[location_karma]] = [karta, present + int(value), karma]
         else:
             c_values.append([karta, int(value), karma])
+>>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
         
     if verb_type == '-':
         values = []
@@ -218,7 +222,10 @@ def eq_builder(karta, karma, verb_type, value, sampradaan):
             
         
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> a6a90bce1ca6cf0ef038eee5b968fc966658f965
 for i in x:
     sep_sentence = tk.tokenize(i)                                           #  Stores the list of seperated sentences within a question
     counter += 1
@@ -266,4 +273,3 @@ for i in x:
     print(containers)
     print(values)
     print(objects)
-
