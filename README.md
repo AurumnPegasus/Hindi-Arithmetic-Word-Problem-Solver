@@ -1,6 +1,6 @@
-#Hindi Arithmetic Word Problem Solver
+# Hindi Arithmetic Word Problem Solver
 
-##Installation
+## Installation
 
 1. Clone the directory into local machine by doing git clone https://github.com/tejasvicsr1/Hindi-Arithmetic-Word-Problem-Solver.git
 
@@ -14,7 +14,7 @@
 
 The necessary tools are now installed, and the application can now be used.
 
-##Usage Instructions
+## Usage Instructions
 
 1. Put the sentences you want to run the Solver on in the list in the script source.py, along with the expected answer if you wish to measure the accuracy.
 
