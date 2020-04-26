@@ -10,6 +10,11 @@
 
 4. Download Hindi Morphanalyzer from https://iiitaphyd-my.sharepoint.com/:u:/g/personal pruthwik_mishra_research_iiit_ac_in/EVdvOPI6vOxBn02Lnuh9Pz4B4dnZJwXNGhsTMAnJN0dXIw?e=IOPU3S and install it by following the  instructions in the README. Copy the script run_morph_on_file_with_raw_text.py and the folder convertor-indic-1.5.2 and morph-hin-le-5.0.5 into the same directory as the directory of the Word Problem Solver.
 
+End of the installtion, your directory should look like 
+
+![WhatsApp Image 2020-04-27 at 01 11 50](https://user-images.githubusercontent.com/54315149/80318617-01980c80-8829-11ea-818b-9b50e286ee1b.jpeg)
+
+
 **This code will work only for Ubuntu 18.04 due to limitations with morph analyser**
 
 The necessary tools are now installed, and the application can now be used.
