@@ -25,6 +25,7 @@ End of the installtion, your directory should have
 - pos-tagger
 - pos_tagger.egg-info
 - pycache
+- README.md
 - requirements.txt
 - run_morph_on_file_with_raw_text.py
 - setup.cfg
