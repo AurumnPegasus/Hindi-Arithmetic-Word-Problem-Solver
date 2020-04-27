@@ -1,7 +1,7 @@
 The application Hindi Arithmetic Word Problem Solver aims to use a rule-based and statistical approach
 to solve arithmetic word problems in Hindi Language. 
 
-The code consists of 5 modules-
+The code consists of 6 modules-
 
 equation.py:
 This module is the first part to get executed and is the part from where all the other modules are called,
